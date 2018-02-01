@@ -5,6 +5,7 @@
 //  Created by Angela Yu on 25/08/2015.
 //  Copyright (c) 2015 London App Brewery. All rights reserved.
 //
+//  Modified by Dana Huget 11/22/2017 (Udemy Course)
 
 import UIKit
 
