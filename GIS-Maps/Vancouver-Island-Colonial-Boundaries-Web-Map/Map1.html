@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="data/LocalGovernmentBoundaries_0.js"></script>
+        <script src="data/PresentLandUse_1.js"></script>
+        <script src="data/FreshWaterandEstuaries_2.js"></script>
+        <script src="data/SaltWater_3.js"></script>
+        <script src="data/BCParksEcologicalReservesProtectedAreas_4.js"></script>
+        <script src="data/IndianReservesandBandNames_5.js"></script>
+        <script src="data/FirstNationCommunityLocations_6.js"></script>
+        <script src="data/WaterResourceManagementStreams_7.js"></script>
+        <script src="data/SaanichParks_8.js"></script>
+        <script src="data/VictoriaParks_9.js"></script>
+        <script src="data/EmpressHotel_10.js"></script>
+        <script src="data/LauWelnewMtNewton_11.js"></script>
+        <script src="data/PKOLSMtDoug_12.js"></script>
+        <script src="data/VictoriaCityHall_13.js"></script>
+        <script src="data/WQENNELELMountFinlayson_14.js"></script>
+        <script src="data/BeaconHillBurialCairnspointfeature_15.js"></script>
+        <script src="data/BeaconHillBurialCairns_16.js"></script>
+        <script src="data/BritishColumbiaLegislature_17.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[48.2094183531,-123.847823506],[48.8250080442,-123.02981965]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var measureControl = new L.Control.Measure({
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        var bounds_group = new L.featureGroup([]);
+        var basemap0 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 28
+        });
+        basemap0.addTo(map);
+        function setBounds() {
+        }
+        function pop_LocalGovernmentBoundaries_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Region Name</strong><br />' + (feature.properties['RGN_NM'] !== null ? Autolinker.link(String(feature.properties['RGN_NM'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_LocalGovernmentBoundaries_0_0() {
+            return {
+                pane: 'pane_LocalGovernmentBoundaries_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,208,169,1.0)',
+            }
+        }
+        map.createPane('pane_LocalGovernmentBoundaries_0');
+        map.getPane('pane_LocalGovernmentBoundaries_0').style.zIndex = 400;
+        map.getPane('pane_LocalGovernmentBoundaries_0').style['mix-blend-mode'] = 'normal';
+        var layer_LocalGovernmentBoundaries_0 = new L.geoJson(json_LocalGovernmentBoundaries_0, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_LocalGovernmentBoundaries_0',
+            onEachFeature: pop_LocalGovernmentBoundaries_0,
+            style: style_LocalGovernmentBoundaries_0_0,
+        });
+        bounds_group.addLayer(layer_LocalGovernmentBoundaries_0);
+        map.addLayer(layer_LocalGovernmentBoundaries_0);
+        function pop_PresentLandUse_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>PLU Label</strong><br />' + (feature.properties['PLU_LABEL'] !== null ? Autolinker.link(String(feature.properties['PLU_LABEL'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_PresentLandUse_1_0(feature) {
+            switch(String(feature.properties['PLU_LABEL'])) {
+                case 'Agriculture':
+                    return {
+                pane: 'pane_PresentLandUse_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,147,136,0.65)',
+            }
+                    break;
+                case 'Barren Surfaces':
+                    return {
+                pane: 'pane_PresentLandUse_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(244,226,199,0.65)',
+            }
+                    break;
+                case 'Mining':
+                    return {
+                pane: 'pane_PresentLandUse_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(121,118,113,0.65)',
+            }
+                    break;
+                case 'Old Forest':
+                    return {
+                pane: 'pane_PresentLandUse_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(92,157,120,0.65)',
+            }
+                    break;
+                case 'Recently Logged':
+                    return {
+                pane: 'pane_PresentLandUse_1',
+                opacity: 1,
+                color: 'rgba(175,179,138,0.65)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(241,244,199,0.65)',
+            }
+                    break;
+                case 'Recreation Activities':
+                    return {
+                pane: 'pane_PresentLandUse_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(135,187,220,0.65)',
+            }
+                    break;
+                case 'Residential Agriculture Mixtures':
+                    return {
+                pane: 'pane_PresentLandUse_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(170,148,204,0.65)',
+            }
+                    break;
+                case 'Urban':
+                    return {
+                pane: 'pane_PresentLandUse_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(113,94,145,0.65)',
+            }
+                    break;
+                case 'Young Forest':
+                    return {
+                pane: 'pane_PresentLandUse_1',
+                opacity: 1,
+                color: 'rgba(128,152,72,0.65)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(178,223,138,0.65)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_PresentLandUse_1');
+        map.getPane('pane_PresentLandUse_1').style.zIndex = 401;
+        map.getPane('pane_PresentLandUse_1').style['mix-blend-mode'] = 'normal';
+        var layer_PresentLandUse_1 = new L.geoJson(json_PresentLandUse_1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_PresentLandUse_1',
+            onEachFeature: pop_PresentLandUse_1,
+            style: style_PresentLandUse_1_0,
+        });
+        bounds_group.addLayer(layer_PresentLandUse_1);
+        map.addLayer(layer_PresentLandUse_1);
+        function pop_FreshWaterandEstuaries_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['PLU_LABEL'] !== null ? Autolinker.link(String(feature.properties['PLU_LABEL'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_FreshWaterandEstuaries_2_0() {
+            return {
+                pane: 'pane_FreshWaterandEstuaries_2',
+                opacity: 1,
+                color: 'rgba(31,120,180,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,206,227,1.0)',
+            }
+        }
+        map.createPane('pane_FreshWaterandEstuaries_2');
+        map.getPane('pane_FreshWaterandEstuaries_2').style.zIndex = 402;
+        map.getPane('pane_FreshWaterandEstuaries_2').style['mix-blend-mode'] = 'normal';
+        var layer_FreshWaterandEstuaries_2 = new L.geoJson(json_FreshWaterandEstuaries_2, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_FreshWaterandEstuaries_2',
+            onEachFeature: pop_FreshWaterandEstuaries_2,
+            style: style_FreshWaterandEstuaries_2_0,
+        });
+        bounds_group.addLayer(layer_FreshWaterandEstuaries_2);
+        map.addLayer(layer_FreshWaterandEstuaries_2);
+        function pop_SaltWater_3(feature, layer) {
+        }
+
+        function style_SaltWater_3_0() {
+            return {
+                pane: 'pane_SaltWater_3',
+                opacity: 1,
+                color: 'rgba(31,120,180,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,206,227,0.650980392157)',
+            }
+        }
+        map.createPane('pane_SaltWater_3');
+        map.getPane('pane_SaltWater_3').style.zIndex = 403;
+        map.getPane('pane_SaltWater_3').style['mix-blend-mode'] = 'normal';
+        var layer_SaltWater_3 = new L.geoJson(json_SaltWater_3, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_SaltWater_3',
+            onEachFeature: pop_SaltWater_3,
+            style: style_SaltWater_3_0,
+        });
+        bounds_group.addLayer(layer_SaltWater_3);
+        map.addLayer(layer_SaltWater_3);
+        function pop_BCParksEcologicalReservesProtectedAreas_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Protection Designation</strong><br />' + (feature.properties['PROT_DESG'] !== null ? Autolinker.link(String(feature.properties['PROT_DESG'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['PROT_NAME'] !== null ? Autolinker.link(String(feature.properties['PROT_NAME'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_BCParksEcologicalReservesProtectedAreas_4_0() {
+            return {
+                pane: 'pane_BCParksEcologicalReservesProtectedAreas_4',
+                opacity: 1,
+                color: 'rgba(51,160,44,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(178,223,138,0.650980392157)',
+            }
+        }
+        map.createPane('pane_BCParksEcologicalReservesProtectedAreas_4');
+        map.getPane('pane_BCParksEcologicalReservesProtectedAreas_4').style.zIndex = 404;
+        map.getPane('pane_BCParksEcologicalReservesProtectedAreas_4').style['mix-blend-mode'] = 'normal';
+        var layer_BCParksEcologicalReservesProtectedAreas_4 = new L.geoJson(json_BCParksEcologicalReservesProtectedAreas_4, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_BCParksEcologicalReservesProtectedAreas_4',
+            onEachFeature: pop_BCParksEcologicalReservesProtectedAreas_4,
+            style: style_BCParksEcologicalReservesProtectedAreas_4_0,
+        });
+        bounds_group.addLayer(layer_BCParksEcologicalReservesProtectedAreas_4);
+        map.addLayer(layer_BCParksEcologicalReservesProtectedAreas_4);
+        function pop_IndianReservesandBandNames_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>English Name</strong><br />' + (feature.properties['NGLSHNM'] !== null ? Autolinker.link(String(feature.properties['NGLSHNM'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Band Name</strong><br />' + (feature.properties['BAND_NAME'] !== null ? Autolinker.link(String(feature.properties['BAND_NAME'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_IndianReservesandBandNames_5_0() {
+            return {
+                pane: 'pane_IndianReservesandBandNames_5',
+                opacity: 1,
+                color: 'rgba(0,62,128,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(1,120,255,0.650980392157)',
+            }
+        }
+        map.createPane('pane_IndianReservesandBandNames_5');
+        map.getPane('pane_IndianReservesandBandNames_5').style.zIndex = 405;
+        map.getPane('pane_IndianReservesandBandNames_5').style['mix-blend-mode'] = 'normal';
+        var layer_IndianReservesandBandNames_5 = new L.geoJson(json_IndianReservesandBandNames_5, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_IndianReservesandBandNames_5',
+            onEachFeature: pop_IndianReservesandBandNames_5,
+            style: style_IndianReservesandBandNames_5_0,
+        });
+        bounds_group.addLayer(layer_IndianReservesandBandNames_5);
+        map.addLayer(layer_IndianReservesandBandNames_5);
+        function pop_FirstNationCommunityLocations_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Bounding City</strong><br />' + (feature.properties['FFC_CTY'] !== null ? Autolinker.link(String(feature.properties['FFC_CTY'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>First Nation Band Name</strong><br />' + (feature.properties['FRST_NTN_B'] !== null ? Autolinker.link(String(feature.properties['FRST_NTN_B'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>First Nation Website</strong><br />' + (feature.properties['FN_URL'] !== null ? Autolinker.link(String(feature.properties['FN_URL'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_FirstNationCommunityLocations_6_0() {
+            return {
+                pane: 'pane_FirstNationCommunityLocations_6',
+                shape: 'triangle',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,62,128,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(1,124,255,1.0)',
+            }
+        }
+        map.createPane('pane_FirstNationCommunityLocations_6');
+        map.getPane('pane_FirstNationCommunityLocations_6').style.zIndex = 406;
+        map.getPane('pane_FirstNationCommunityLocations_6').style['mix-blend-mode'] = 'normal';
+        var layer_FirstNationCommunityLocations_6 = new L.geoJson(json_FirstNationCommunityLocations_6, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_FirstNationCommunityLocations_6',
+            onEachFeature: pop_FirstNationCommunityLocations_6,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_FirstNationCommunityLocations_6_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_FirstNationCommunityLocations_6);
+        map.addLayer(layer_FirstNationCommunityLocations_6);
+        function pop_WaterResourceManagementStreams_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Description</strong><br />' + (feature.properties['DSCRPTN'] !== null ? Autolinker.link(String(feature.properties['DSCRPTN'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_WaterResourceManagementStreams_7_0() {
+            return {
+                pane: 'pane_WaterResourceManagementStreams_7',
+                opacity: 1,
+                color: 'rgba(166,206,227,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+        }
+        map.createPane('pane_WaterResourceManagementStreams_7');
+        map.getPane('pane_WaterResourceManagementStreams_7').style.zIndex = 407;
+        map.getPane('pane_WaterResourceManagementStreams_7').style['mix-blend-mode'] = 'normal';
+        var layer_WaterResourceManagementStreams_7 = new L.geoJson(json_WaterResourceManagementStreams_7, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_WaterResourceManagementStreams_7',
+            onEachFeature: pop_WaterResourceManagementStreams_7,
+            style: style_WaterResourceManagementStreams_7_0,
+        });
+        bounds_group.addLayer(layer_WaterResourceManagementStreams_7);
+        map.addLayer(layer_WaterResourceManagementStreams_7);
+        function pop_SaanichParks_8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Park Name</strong><br />' + (feature.properties['PARKNAME'] !== null ? Autolinker.link(String(feature.properties['PARKNAME'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_SaanichParks_8_0() {
+            return {
+                pane: 'pane_SaanichParks_8',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(9,137,68,1.0)',
+            }
+        }
+        map.createPane('pane_SaanichParks_8');
+        map.getPane('pane_SaanichParks_8').style.zIndex = 408;
+        map.getPane('pane_SaanichParks_8').style['mix-blend-mode'] = 'normal';
+        var layer_SaanichParks_8 = new L.geoJson(json_SaanichParks_8, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_SaanichParks_8',
+            onEachFeature: pop_SaanichParks_8,
+            style: style_SaanichParks_8_0,
+        });
+        bounds_group.addLayer(layer_SaanichParks_8);
+        map.addLayer(layer_SaanichParks_8);
+        function pop_VictoriaParks_9(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Park Name</strong><br />' + (feature.properties['Park_Name'] !== null ? Autolinker.link(String(feature.properties['Park_Name'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_VictoriaParks_9_0() {
+            return {
+                pane: 'pane_VictoriaParks_9',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(9,137,68,1.0)',
+            }
+        }
+        map.createPane('pane_VictoriaParks_9');
+        map.getPane('pane_VictoriaParks_9').style.zIndex = 409;
+        map.getPane('pane_VictoriaParks_9').style['mix-blend-mode'] = 'normal';
+        var layer_VictoriaParks_9 = new L.geoJson(json_VictoriaParks_9, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_VictoriaParks_9',
+            onEachFeature: pop_VictoriaParks_9,
+            style: style_VictoriaParks_9_0,
+        });
+        bounds_group.addLayer(layer_VictoriaParks_9);
+        map.addLayer(layer_VictoriaParks_9);
+        function pop_EmpressHotel_10(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Source</strong><br />' + (feature.properties['Source'] !== null ? Autolinker.link(String(feature.properties['Source'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_EmpressHotel_10_0() {
+            return {
+                pane: 'pane_EmpressHotel_10',
+                shape: 'diamond',
+                radius: 4.4,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(70,250,211,1.0)',
+            }
+        }
+        map.createPane('pane_EmpressHotel_10');
+        map.getPane('pane_EmpressHotel_10').style.zIndex = 410;
+        map.getPane('pane_EmpressHotel_10').style['mix-blend-mode'] = 'normal';
+        var layer_EmpressHotel_10 = new L.geoJson(json_EmpressHotel_10, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_EmpressHotel_10',
+            onEachFeature: pop_EmpressHotel_10,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_EmpressHotel_10_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_EmpressHotel_10);
+        map.addLayer(layer_EmpressHotel_10);
+        function pop_LauWelnewMtNewton_11(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Source</strong><br />' + (feature.properties['Source'] !== null ? Autolinker.link(String(feature.properties['Source'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_LauWelnewMtNewton_11_0() {
+            return {
+                pane: 'pane_LauWelnewMtNewton_11',
+                shape: 'diamond',
+                radius: 4.4,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(70,250,211,1.0)',
+            }
+        }
+        map.createPane('pane_LauWelnewMtNewton_11');
+        map.getPane('pane_LauWelnewMtNewton_11').style.zIndex = 411;
+        map.getPane('pane_LauWelnewMtNewton_11').style['mix-blend-mode'] = 'normal';
+        var layer_LauWelnewMtNewton_11 = new L.geoJson(json_LauWelnewMtNewton_11, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_LauWelnewMtNewton_11',
+            onEachFeature: pop_LauWelnewMtNewton_11,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_LauWelnewMtNewton_11_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_LauWelnewMtNewton_11);
+        map.addLayer(layer_LauWelnewMtNewton_11);
+        function pop_PKOLSMtDoug_12(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Source</strong><br />' + (feature.properties['Source'] !== null ? Autolinker.link(String(feature.properties['Source'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_PKOLSMtDoug_12_0() {
+            return {
+                pane: 'pane_PKOLSMtDoug_12',
+                shape: 'diamond',
+                radius: 4.4,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(70,250,211,1.0)',
+            }
+        }
+        map.createPane('pane_PKOLSMtDoug_12');
+        map.getPane('pane_PKOLSMtDoug_12').style.zIndex = 412;
+        map.getPane('pane_PKOLSMtDoug_12').style['mix-blend-mode'] = 'normal';
+        var layer_PKOLSMtDoug_12 = new L.geoJson(json_PKOLSMtDoug_12, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_PKOLSMtDoug_12',
+            onEachFeature: pop_PKOLSMtDoug_12,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_PKOLSMtDoug_12_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_PKOLSMtDoug_12);
+        map.addLayer(layer_PKOLSMtDoug_12);
+        function pop_VictoriaCityHall_13(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Source</strong><br />' + (feature.properties['Source'] !== null ? Autolinker.link(String(feature.properties['Source'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_VictoriaCityHall_13_0() {
+            return {
+                pane: 'pane_VictoriaCityHall_13',
+                shape: 'diamond',
+                radius: 4.4,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(70,250,211,1.0)',
+            }
+        }
+        map.createPane('pane_VictoriaCityHall_13');
+        map.getPane('pane_VictoriaCityHall_13').style.zIndex = 413;
+        map.getPane('pane_VictoriaCityHall_13').style['mix-blend-mode'] = 'normal';
+        var layer_VictoriaCityHall_13 = new L.geoJson(json_VictoriaCityHall_13, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_VictoriaCityHall_13',
+            onEachFeature: pop_VictoriaCityHall_13,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_VictoriaCityHall_13_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_VictoriaCityHall_13);
+        map.addLayer(layer_VictoriaCityHall_13);
+        function pop_WQENNELELMountFinlayson_14(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Source</strong><br />' + (feature.properties['Source'] !== null ? Autolinker.link(String(feature.properties['Source'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_WQENNELELMountFinlayson_14_0() {
+            return {
+                pane: 'pane_WQENNELELMountFinlayson_14',
+                shape: 'diamond',
+                radius: 4.4,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(70,250,211,1.0)',
+            }
+        }
+        map.createPane('pane_WQENNELELMountFinlayson_14');
+        map.getPane('pane_WQENNELELMountFinlayson_14').style.zIndex = 414;
+        map.getPane('pane_WQENNELELMountFinlayson_14').style['mix-blend-mode'] = 'normal';
+        var layer_WQENNELELMountFinlayson_14 = new L.geoJson(json_WQENNELELMountFinlayson_14, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_WQENNELELMountFinlayson_14',
+            onEachFeature: pop_WQENNELELMountFinlayson_14,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_WQENNELELMountFinlayson_14_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_WQENNELELMountFinlayson_14);
+        map.addLayer(layer_WQENNELELMountFinlayson_14);
+        function pop_BeaconHillBurialCairnspointfeature_15(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Source</strong><br />' + (feature.properties['Source'] !== null ? Autolinker.link(String(feature.properties['Source'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_BeaconHillBurialCairnspointfeature_15_0() {
+            return {
+                pane: 'pane_BeaconHillBurialCairnspointfeature_15',
+                shape: 'diamond',
+                radius: 4.4,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(70,250,211,1.0)',
+            }
+        }
+        map.createPane('pane_BeaconHillBurialCairnspointfeature_15');
+        map.getPane('pane_BeaconHillBurialCairnspointfeature_15').style.zIndex = 415;
+        map.getPane('pane_BeaconHillBurialCairnspointfeature_15').style['mix-blend-mode'] = 'normal';
+        var layer_BeaconHillBurialCairnspointfeature_15 = new L.geoJson(json_BeaconHillBurialCairnspointfeature_15, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_BeaconHillBurialCairnspointfeature_15',
+            onEachFeature: pop_BeaconHillBurialCairnspointfeature_15,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_BeaconHillBurialCairnspointfeature_15_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_BeaconHillBurialCairnspointfeature_15);
+        map.addLayer(layer_BeaconHillBurialCairnspointfeature_15);
+        function pop_BeaconHillBurialCairns_16(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Source</strong><br />' + (feature.properties['Source'] !== null ? Autolinker.link(String(feature.properties['Source'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_BeaconHillBurialCairns_16_0() {
+            return {
+                pane: 'pane_BeaconHillBurialCairns_16',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(70,250,211,1.0)',
+            }
+        }
+        map.createPane('pane_BeaconHillBurialCairns_16');
+        map.getPane('pane_BeaconHillBurialCairns_16').style.zIndex = 416;
+        map.getPane('pane_BeaconHillBurialCairns_16').style['mix-blend-mode'] = 'normal';
+        var layer_BeaconHillBurialCairns_16 = new L.geoJson(json_BeaconHillBurialCairns_16, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_BeaconHillBurialCairns_16',
+            onEachFeature: pop_BeaconHillBurialCairns_16,
+            style: style_BeaconHillBurialCairns_16_0,
+        });
+        bounds_group.addLayer(layer_BeaconHillBurialCairns_16);
+        map.addLayer(layer_BeaconHillBurialCairns_16);
+        function pop_BritishColumbiaLegislature_17(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Source</strong><br />' + (feature.properties['Source'] !== null ? Autolinker.link(String(feature.properties['Source'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_BritishColumbiaLegislature_17_0() {
+            return {
+                pane: 'pane_BritishColumbiaLegislature_17',
+                shape: 'diamond',
+                radius: 4.4,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(70,250,211,1.0)',
+            }
+        }
+        map.createPane('pane_BritishColumbiaLegislature_17');
+        map.getPane('pane_BritishColumbiaLegislature_17').style.zIndex = 417;
+        map.getPane('pane_BritishColumbiaLegislature_17').style['mix-blend-mode'] = 'normal';
+        var layer_BritishColumbiaLegislature_17 = new L.geoJson(json_BritishColumbiaLegislature_17, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_BritishColumbiaLegislature_17',
+            onEachFeature: pop_BritishColumbiaLegislature_17,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_BritishColumbiaLegislature_17_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_BritishColumbiaLegislature_17);
+        map.addLayer(layer_BritishColumbiaLegislature_17);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/BritishColumbiaLegislature_17.png" /> British Columbia Legislature': layer_BritishColumbiaLegislature_17,'<img src="legend/BeaconHillBurialCairns_16.png" /> Beacon Hill Burial Cairns': layer_BeaconHillBurialCairns_16,'<img src="legend/BeaconHillBurialCairnspointfeature_15.png" /> Beacon Hill Burial Cairns - point feature': layer_BeaconHillBurialCairnspointfeature_15,'<img src="legend/WQENNELELMountFinlayson_14.png" /> WQENNELEL (Mount Finlayson)': layer_WQENNELELMountFinlayson_14,'<img src="legend/VictoriaCityHall_13.png" /> Victoria City Hall': layer_VictoriaCityHall_13,'<img src="legend/PKOLSMtDoug_12.png" /> PKOLS (Mt Doug)': layer_PKOLSMtDoug_12,'<img src="legend/LauWelnewMtNewton_11.png" /> Lau Welnew (Mt. Newton)': layer_LauWelnewMtNewton_11,'<img src="legend/EmpressHotel_10.png" /> Empress Hotel': layer_EmpressHotel_10,'<img src="legend/VictoriaParks_9.png" /> Victoria Parks': layer_VictoriaParks_9,'<img src="legend/SaanichParks_8.png" /> Saanich Parks': layer_SaanichParks_8,'<img src="legend/WaterResourceManagementStreams_7.png" /> Water Resource Management Streams': layer_WaterResourceManagementStreams_7,'<img src="legend/FirstNationCommunityLocations_6.png" /> First Nation Community Locations': layer_FirstNationCommunityLocations_6,'<img src="legend/IndianReservesandBandNames_5.png" /> Indian Reserves and Band Names': layer_IndianReservesandBandNames_5,'<img src="legend/BCParksEcologicalReservesProtectedAreas_4.png" /> BC Parks, Ecological Reserves, Protected Areas': layer_BCParksEcologicalReservesProtectedAreas_4,'<img src="legend/SaltWater_3.png" /> Salt Water': layer_SaltWater_3,'<img src="legend/FreshWaterandEstuaries_2.png" /> Fresh Water and Estuaries': layer_FreshWaterandEstuaries_2,'Present Land Use<br /><table><tr><td style="text-align: center;"><img src="legend/PresentLandUse_1_Agriculture0.png" /></td><td>Agriculture</td></tr><tr><td style="text-align: center;"><img src="legend/PresentLandUse_1_BarrenSurfaces1.png" /></td><td>Barren Surfaces</td></tr><tr><td style="text-align: center;"><img src="legend/PresentLandUse_1_Mining2.png" /></td><td>Mining</td></tr><tr><td style="text-align: center;"><img src="legend/PresentLandUse_1_OldForest3.png" /></td><td>Old Forest</td></tr><tr><td style="text-align: center;"><img src="legend/PresentLandUse_1_RecentlyLogged4.png" /></td><td>Recently Logged</td></tr><tr><td style="text-align: center;"><img src="legend/PresentLandUse_1_RecreationActivities5.png" /></td><td>Recreation Activities</td></tr><tr><td style="text-align: center;"><img src="legend/PresentLandUse_1_ResidentialAgricultureMixtures6.png" /></td><td>Residential Agriculture Mixtures</td></tr><tr><td style="text-align: center;"><img src="legend/PresentLandUse_1_Urban7.png" /></td><td>Urban</td></tr><tr><td style="text-align: center;"><img src="legend/PresentLandUse_1_YoungForest8.png" /></td><td>Young Forest</td></tr></table>': layer_PresentLandUse_1,'<img src="legend/LocalGovernmentBoundaries_0.png" /> Local Government Boundaries': layer_LocalGovernmentBoundaries_0,}).addTo(map);
+        map.on("zoomend", function(){
+
+            if (map.hasLayer(layer_LocalGovernmentBoundaries_0)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 5) {
+                    layer_LocalGovernmentBoundaries_0.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_LocalGovernmentBoundaries_0.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_IndianReservesandBandNames_5)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 5) {
+                    layer_IndianReservesandBandNames_5.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_IndianReservesandBandNames_5.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+        });
+        setBounds();
+        var i = 0;
+        layer_LocalGovernmentBoundaries_0.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['RGN_NM'] !== null?String('<div style="color: #000000; font-size: 8pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['RGN_NM']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_LocalGovernmentBoundaries_0'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_IndianReservesandBandNames_5.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['BAND_NAME'] !== null?String('<div style="color: #003e80; font-size: 8pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['BAND_NAME']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_IndianReservesandBandNames_5'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+            if (map.hasLayer(layer_LocalGovernmentBoundaries_0)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 5) {
+                    layer_LocalGovernmentBoundaries_0.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_LocalGovernmentBoundaries_0.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_IndianReservesandBandNames_5)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 5) {
+                    layer_IndianReservesandBandNames_5.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_IndianReservesandBandNames_5.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+        resetLabels([layer_LocalGovernmentBoundaries_0,layer_IndianReservesandBandNames_5]);
+        map.on("zoomend", function(){
+            resetLabels([layer_LocalGovernmentBoundaries_0,layer_IndianReservesandBandNames_5]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_LocalGovernmentBoundaries_0,layer_IndianReservesandBandNames_5]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_LocalGovernmentBoundaries_0,layer_IndianReservesandBandNames_5]);
+        });
+        </script>
+    </body>
+</html>
