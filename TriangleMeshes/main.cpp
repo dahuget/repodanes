@@ -4,6 +4,8 @@
  * Its previous only functionality is to render vertices/normals/textures and load textures from png files
  * A demonstration of an ImGui menu window was also included in this file
  *
+ * main.cpp within icg/assignment2
+ * 
  * This file was updated by Dana Huget, V00860786 for Assignment 2 submission
  * February 26, 2017
 */
