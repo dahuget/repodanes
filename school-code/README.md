@@ -1,3 +1,3 @@
-### Various data structure and aglorithm solutions for UVic CSC courses
+### Data structure and aglorithm solutions for UVic CSC courses
 
-Examples show object-oriented programming experience in Java, C, and Python
+code examples show object-oriented programming experience in Java, C, and Python
