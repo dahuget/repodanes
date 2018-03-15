@@ -1,3 +1,3 @@
 # repodanes
 
-general repository for the projects created by D. A. Huget
+a general repository showcasing the projects created by D. A. Huget
