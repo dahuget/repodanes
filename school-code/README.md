@@ -1,3 +1,3 @@
 ### Various data structure and aglorithm solutions for UVic CSC courses
 
-Primary languages: Java, Python, C & C++
+Examples show object-oriented programming experience in Java, C, and Python
